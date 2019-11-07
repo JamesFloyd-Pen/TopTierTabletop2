@@ -22,6 +22,7 @@ public class HomePage extends AppCompatActivity {
         final Button partyB = findViewById(R.id.partyButton);
         final Button playerB = findViewById(R.id.playerButton);
 
+        //Handly BButtons
 
         newGameB.setOnClickListener(new View.OnClickListener(){
             @Override
