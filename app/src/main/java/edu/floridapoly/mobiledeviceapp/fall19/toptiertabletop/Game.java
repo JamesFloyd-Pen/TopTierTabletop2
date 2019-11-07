@@ -28,5 +28,47 @@ public class Game
         this.pictureUrl = pictureUrl;
     }
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getStory() {
+        return story;
+    }
+
+    public void setStory(String story) {
+        this.story = story;
+    }
+
+    public String getCharacter() {
+        return character;
+    }
+
+    public void setCharacter(String character) {
+        this.character = character;
+    }
+
+    public String getPictureUrl() {
+        return pictureUrl;
+    }
+
+    public void setPictureUrl(String pictureUrl) {
+        this.pictureUrl = pictureUrl;
+    }
+
+    public static Game[] getCampaigns() {
+        return campaigns;
+    }
 }
