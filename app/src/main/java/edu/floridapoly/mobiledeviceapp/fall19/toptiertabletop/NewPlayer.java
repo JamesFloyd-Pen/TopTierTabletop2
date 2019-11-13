@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -16,6 +18,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class NewPlayer extends AppCompatActivity{
 
@@ -44,19 +48,34 @@ private FirebaseAuth.AuthStateListener firebaseAuthStateListener;
 
         final EditText usernameEditText = findViewById(R.id.username);
         final EditText passwordEditText = findViewById(R.id.password);
+        final EditText nameEditText = findViewById(R.id.name);
+        final RadioGroup radioGroup = findViewById(R.id.preferenceDecision);
         final Button registerButton = findViewById(R.id.register);
         registerButton.setEnabled(true);
 
         registerButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
+                int selection = radioGroup.getCheckedRadioButtonId();
+
+                final RadioButton radioButton = findViewById(selection);
+                if(radioButton.getText() == null){
+                    return;
+                }
+
                 final String username = usernameEditText.getText().toString();
                 final String password = passwordEditText.getText().toString();
+                final String name = nameEditText.getText().toString();
                 mAuth.createUserWithEmailAndPassword(username,password).addOnCompleteListener(NewPlayer.this,new OnCompleteListener<AuthResult>(){
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task){
                         if(!task.isSuccessful()){
                             Toast.makeText(NewPlayer.this,"sign up error", Toast.LENGTH_SHORT).show();
+                        } else {
+                            String userId = mAuth.getCurrentUser().getUid();
+                            DatabaseReference currentUserDb = FirebaseDatabase.getInstance().getReference().child("Users").child(radioButton.getText().toString()).child(userId).child("name");
+                            currentUserDb.setValue(name);
+
                         }
                     }
                 });
