@@ -7,16 +7,21 @@ import android.view.View;
 import android.widget.Button;
 import android.os.Bundle;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class HomePage extends AppCompatActivity {
 
     private Button newGameB;
     private Button partyB;
     private Button playerB;
+    private FirebaseAuth mAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+        mAuth = FirebaseAuth.getInstance();
 
         final Button newGameB = findViewById(R.id.newgameButton);
         final Button partyB = findViewById(R.id.partyButton);
@@ -98,5 +103,14 @@ public class HomePage extends AppCompatActivity {
     {
         Intent myPartyPage = new Intent(this, GamePage.class);
         startActivity(myPartyPage);
+    }
+
+    public void logoutUser(View view) {
+        mAuth.signOut();
+        Intent restart = new Intent(HomePage.this,LoginPage.class);
+        startActivity(restart);
+        finish();
+        return;
+
     }
 }
