@@ -24,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import edu.floridapoly.mobiledeviceapp.fall19.toptiertabletop.HomePage;
+import edu.floridapoly.mobiledeviceapp.fall19.toptiertabletop.NewPlayer;
 import edu.floridapoly.mobiledeviceapp.fall19.toptiertabletop.R;
 import edu.floridapoly.mobiledeviceapp.fall19.toptiertabletop.ui.login.LoginViewModel;
 import edu.floridapoly.mobiledeviceapp.fall19.toptiertabletop.ui.login.LoginViewModelFactory;
@@ -42,6 +43,8 @@ public class LoginActivity extends AppCompatActivity {
         final EditText usernameEditText = findViewById(R.id.username);
         final EditText passwordEditText = findViewById(R.id.password);
         final Button loginButton = findViewById(R.id.login);
+        final Button registerButton = findViewById(R.id.register);
+        registerButton.setEnabled(true);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
@@ -119,6 +122,14 @@ public class LoginActivity extends AppCompatActivity {
                         passwordEditText.getText().toString());
             }
         });
+        registerButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        openRegistrationPage();
+                        finish();
+                        return;
+                    }
+                });
     }
 
     private void updateUiWithUser(LoggedInUserView model) {
@@ -132,6 +143,11 @@ public class LoginActivity extends AppCompatActivity {
 
     private void showLoginFailed(@StringRes Integer errorString) {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
+    }
+
+    private void openRegistrationPage(){
+        Intent goToRegistration = new Intent(this,NewPlayer.class);
+        startActivity(goToRegistration);
     }
 
     private void openHomePage()
