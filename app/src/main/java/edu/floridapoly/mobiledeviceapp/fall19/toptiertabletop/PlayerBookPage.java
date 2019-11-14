@@ -14,7 +14,18 @@ public class PlayerBookPage extends AppCompatActivity {
 
 
     /*
-
+        TODO
+        1. Connect the  database with the the player page
+        2. Takes said values and place them inside the proper containers
+        3. Make demo PC
 
      */
+
+    @Override
+    public void onStart()
+    {
+
+
+    }
+
 }
