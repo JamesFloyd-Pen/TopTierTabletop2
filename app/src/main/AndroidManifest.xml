@@ -20,6 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".HomePage" />
+        <activity android:name=".NewCharacterCreator" />
         <activity android:name=".PlayerBookPage"></activity>
         <activity android:name=".GamePage"></activity>
     </application>

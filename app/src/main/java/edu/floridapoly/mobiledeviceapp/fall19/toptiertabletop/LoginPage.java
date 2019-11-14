@@ -52,7 +52,6 @@ public class LoginPage extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(LoginPage.this, "pressed login", Toast.LENGTH_SHORT).show();
                 final String email = usernameEditText.getText().toString();
                 final String password = passwordEditText.getText().toString();
                 mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(LoginPage.this, new OnCompleteListener<AuthResult>() {
@@ -61,8 +60,6 @@ public class LoginPage extends AppCompatActivity {
                         if(!task.isSuccessful()){
                             Toast.makeText(LoginPage.this, "sign in error", Toast.LENGTH_SHORT).show();
                         } else {
-
-                            Toast.makeText(LoginPage.this, "sign in success", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

@@ -91,26 +91,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.3" />
 
-    <RadioGroup
-        android:id="@+id/preferenceDecision"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/register"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password">
-
-        <RadioButton
-            android:id="@+id/Character"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Searching for a Party" />
-
-        <RadioButton
-            android:id="@+id/PartyLeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Searching for a Player" />
-    </RadioGroup>
 </androidx.constraintlayout.widget.ConstraintLayout>

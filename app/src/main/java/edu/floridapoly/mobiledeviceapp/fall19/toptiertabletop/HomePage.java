@@ -24,6 +24,7 @@ public class HomePage extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         final Button newGameB = findViewById(R.id.newgameButton);
+        final Button newCharB = findViewById(R.id.newCharacterButton);
         final Button partyB = findViewById(R.id.partyButton);
         final Button playerB = findViewById(R.id.playerButton);
 
@@ -33,6 +34,13 @@ public class HomePage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 newGame();
+            }
+
+        });
+        newCharB.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                newChar();
             }
 
         });
@@ -89,19 +97,25 @@ public class HomePage extends AppCompatActivity {
     private void newGame()
     {
         //Moves the user to the game making screen
-        Intent myNewGame = new Intent(this, NewGame.class);
+        Intent myNewGame = new Intent(HomePage.this, NewGame.class);
+        startActivity(myNewGame);
+    }
+    private void newChar()
+    {
+        //Moves the user to the character making screen
+        Intent myNewGame = new Intent(HomePage.this, NewCharacterCreator.class);
         startActivity(myNewGame);
     }
 
     private void openPlayerPage()
     {
-        Intent myPlayerPage = new Intent(this, PlayerBookPage.class);
+        Intent myPlayerPage = new Intent(HomePage.this,PlayerBookPage.class);
         startActivity(myPlayerPage);
     }
 
     private void openPartyPage()
     {
-        Intent myPartyPage = new Intent(this, GamePage.class);
+        Intent myPartyPage = new Intent(HomePage.this, GamePage.class);
         startActivity(myPartyPage);
     }
 
