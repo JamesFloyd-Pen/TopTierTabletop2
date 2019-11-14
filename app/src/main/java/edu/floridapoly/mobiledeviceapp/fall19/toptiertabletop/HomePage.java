@@ -103,8 +103,8 @@ public class HomePage extends AppCompatActivity {
     private void newChar()
     {
         //Moves the user to the character making screen
-        Intent myNewGame = new Intent(HomePage.this, NewCharacterCreator.class);
-        startActivity(myNewGame);
+        Intent myNewChar = new Intent(HomePage.this, NewCharacterCreator.class);
+        startActivity(myNewChar);
     }
 
     private void openPlayerPage()
