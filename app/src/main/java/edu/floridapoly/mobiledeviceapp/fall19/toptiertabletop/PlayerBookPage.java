@@ -21,6 +21,7 @@ public class PlayerBookPage extends AppCompatActivity {
 
      */
 
+    /*
     @Override
     public void onStart()
     {
@@ -28,4 +29,6 @@ public class PlayerBookPage extends AppCompatActivity {
 
     }
 
+
+     */
 }
